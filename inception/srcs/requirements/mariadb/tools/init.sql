@@ -1,0 +1,13 @@
+-- Database oluştur
+CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
+
+-- Kullanıcı oluştur
+CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';
+
+-- Yetkiler ver
+GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';
+
+-- Root için şifre ayarla
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
+
+FLUSH PRIVILEGES;
